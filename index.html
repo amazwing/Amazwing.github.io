@@ -1,0 +1,175 @@
+<html>
+<head>
+<style>
+    .img-bag {
+        
+        width: 500px;
+        height: 500px;
+        background-repeat: no-repeat;
+        background-size: 500px;
+    }
+
+    .img1 {
+        background-image: url("Image/promo1.png");
+    }
+
+    .img2 {
+        background-image: url("Image/promo2.png");
+    }
+
+    .img3 {
+        background-image: url("Image/promo3.png");
+    }
+
+    .img4 {
+        background-image: url("Image/promo4.png");
+    }
+
+    #friendName {
+        position: relative;
+        top: 43px;;
+        left: 148px;
+        font-family: 'Noto Sans', sans-serif;
+        font-weight: bold;
+        letter-spacing: 1px;
+        font-size: 30px;
+        font-style: italic;
+    }
+
+    #myName {
+        position: relative;
+        top: 325px;
+        left: 225px;
+        font-family: 'Noto Sans', sans-serif;
+        font-weight: bold;
+        letter-spacing: 1px;
+        font-size: 20px;
+        font-style: italic;
+    }
+
+    
+</style>
+</head>
+<body>
+
+<!-- TODO: -->
+
+<input type="text" placeholder="Enter your name" id="i_name">
+
+<input type="text" placeholder="To.." id="i_to">
+
+<select id="selPhoto">
+    <option value="">Select background</option>
+    <option value="op2">Furry delight</option>
+    <option value="op3">City lights</option>
+    <option value="op4">New beginings</option>
+    <option value="op1">Looking forward</option>
+</select>
+
+
+
+
+<!-- TODO: -->
+
+<div id="html-content-holder" style="background-color: #F0F0F1; color: #fff; width: 502px;
+         ">
+        
+
+        <div id="shanta" class="img-bag img1">
+            <div id="friendName">Your friend Name</div>
+            <div id="myName">- Your name</div>
+        </div>
+
+
+    </div>
+
+
+
+
+    <input id="btn-Preview-Image" type="button" value="Preview"/>
+
+
+    <a id="btn-Convert-Html2Image" href="#">Download</a>
+    <br/>
+    <h3>Preview :</h3>
+    <div id="previewImage">
+    </div>
+
+
+
+
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"></script>
+
+<script>
+$(document).ready(function(){
+
+	
+var element = $("#html-content-holder"); // global variable
+var getCanvas; // global variable
+ 
+    $("#btn-Preview-Image").on('click', function () {
+
+        // TODO:
+        var getName = _('i_name').value;
+        var getFriendName = _('i_to').value;
+        _('friendName').innerHTML = getFriendName+",";
+        _('myName').innerHTML = "- "+getName;
+
+
+
+         html2canvas(element, {
+         onrendered: function (canvas) {
+                $("#previewImage").append(canvas);
+                getCanvas = canvas;
+             }
+         });
+    });
+
+	$("#btn-Convert-Html2Image").on('click', function () {
+    var imgageData = getCanvas.toDataURL("image/png");
+    // Now browser starts downloading it instead of just showing it
+    var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+    $("#btn-Convert-Html2Image").attr("download", "HappyNewYear.png").attr("href", newData);
+	});
+
+});
+
+
+function _(x) {
+    return document.getElementById(x);
+}
+
+
+
+
+
+$("select").change(function(){
+
+    var getThisPhoto = _('selPhoto').value;
+    if(getThisPhoto == "op1")
+    {
+        $("#shanta").addClass("img1");
+        $("#shanta").removeClass( "img2 img3 img4" );
+    } else if(getThisPhoto == "op2")
+    {
+        $("#shanta").addClass("img2");
+        $("#shanta").removeClass( "img1 img3 img4" );
+    } else if(getThisPhoto == "op3")
+    {
+        $("#shanta").addClass("img3");
+        $("#shanta").removeClass( "img1 img2 img4" );
+    } else if(getThisPhoto == "op4")
+    {
+        $("#shanta").addClass("img4");
+        $("#shanta").removeClass( "img1 img2 img3" );
+    }
+});
+</script>
+</body>
+</html>
