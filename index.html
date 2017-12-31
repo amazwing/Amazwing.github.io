@@ -58,6 +58,14 @@
 
 <!-- TODO: -->
 <nav class="navbar fixed-top navbar-light bg-light justify-content-between">
+
+  <div class="float-left">
+  <a href="http://amazwing.com/" target="_blank" class="navbar-brand"><img src="image/logo1.png" class="img-fluid" style="width: 50%;"></a></div>
+
+  <div class="float-right" style="width: 300px;" >
+  <a target="_blank" href="https://play.google.com/store/apps/details?id=com.amazwing.app&hl=en"><img src="image/google-play.png" class="img-fluid" ></a> </div>
+</nav>
+
   
 	<div class="float-left">
 	<a href="http://amazwing.com/" target="_blank" class="navbar-brand"><img src="Image/logo1.png" class="img-fluid" style="width: 50%;"></a>
@@ -66,6 +74,7 @@
 	<a class="float-right" target="_blank" href="https://play.google.com/store/apps/details?id=com.amazwing.app&hl=en"><img src="Image/google-play.png" class="img-fluid"></a>
 	</div>
 		</nav>
+
 
 <div class="d-xs-none d-md-block" style="margin-top: 250px"></div>
 <div class="d-xs-block d-md-block" style="margin-top: 300px"></div>
@@ -97,7 +106,7 @@
  <input id="btn-Preview-Image" class="btn btn-dark btn-lg" type="button" value="Preview">
 
 
-    <a id="btn-Convert-Html2Image" class="btn btn-dark btn-lg" href="#" style="color: white;">Download</a>
+    <a id="btn-Convert-Html2Image" class="btn btn-dark btn-lg disabled" href="#" style="color: white;">Download</a>
 </center>   
 </div>
 
@@ -169,6 +178,8 @@ var getCanvas; // global variable
         var getFriendName = _('i_to').value;
         _('friendName').innerHTML = getFriendName+",";
         _('myName').innerHTML = "- "+getName;
+
+        $('#btn-Convert-Html2Image').removeClass("disabled");
 
 
 
